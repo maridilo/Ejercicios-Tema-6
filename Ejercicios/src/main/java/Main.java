@@ -6,8 +6,12 @@ import java.util.List;
 import java.util.Random;
 
 public class Main {
+    private static final String EJERCICIO_1 = "Ejercicio 1";
+    private static final String EJERCICIO_2 = "Ejercicio 2";
+    private static final String EJERCICIO_3 = "Ejercicio 3";
+    private static final String EJERCICIO_4 = "Ejercicio 4";
+
     private static JLabel resultadoLabel;
-    private static JLabel tituloLabel;
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
@@ -38,22 +42,14 @@ public class Main {
         ejecutarButton.setHorizontalAlignment(SwingConstants.CENTER);
         ejecutarButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                ejecutarEjemploSeleccionado(comboBox.getSelectedItem());
+                ejecutarEjercicioSeleccionado(comboBox.getSelectedItem());
             }
         });
 
-        comboBox.addItem("Ejemplo 1");
-        comboBox.addItem("Ejemplo 2");
-        comboBox.addItem("Ejemplo 3");
-        comboBox.addItem("Ejemplo 4");
-        comboBox.addItem("Ejemplo 5");
-        comboBox.addItem("Ejemplo 6");
-        comboBox.addItem("Ejemplo 7");
-        comboBox.addItem("Ejemplo 8");
-        comboBox.addItem("Ejemplo 9");
-        comboBox.addItem("Ejemplo 10");
-        comboBox.addItem("Ejemplo 11");
-        comboBox.addItem("Ejemplo 12");
+        comboBox.addItem("Ejercicio 1");
+        comboBox.addItem("Ejercicio 2");
+        comboBox.addItem("Ejercicio 3");
+        comboBox.addItem("Ejercicio 4");
 
         panelCentral.add(tituloLabel);
         panelCentral.add(comboBox);
@@ -66,24 +62,24 @@ public class Main {
         frame.setVisible(true);
     }
 
-    public static void ejecutarEjemploSeleccionado(Object seleccion) {
+    public static void ejecutarEjercicioSeleccionado(Object seleccion) {
         if (seleccion != null && seleccion instanceof String) {
             String ejemplo = (String) seleccion;
             switch (ejemplo) {
-                case "Ejemplo 1":
-                    ejecutarEjemplo1();
+                case "Ejercicio 1":
+                    ejecutarEjercicio1();
                     break;
                 case "Ejercicio 2":
-                    ejecutarEjemplo2();
+                    ejecutarEjercicio2();
                     break;
                 default:
-                    resultadoLabel.setText("Ejemplo no encontrado");
+                    resultadoLabel.setText("Ejercicio no encontrado");
             }
         }
     }
 
 
-    public static void ejecutarEjemplo1() {
+    public static void ejecutarEjercicio1() {
         ej1<Integer> parejaEnteros = new ej1<>(10, 20);
         ej1<String> parejaStrings = new ej1<>("Hola", "Mundo");
 
@@ -94,7 +90,7 @@ public class Main {
         resultadoLabel.setText(resultado);
     }
 
-    public static void ejecutarEjemplo2() {
+    public static void ejecutarEjercicio2() {
         // Crear una lista de datos reales
         List<Double> lista = new ArrayList<>();
         Random random = new Random();
