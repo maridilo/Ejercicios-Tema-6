@@ -1,3 +1,8 @@
+import ejercicios.ej1;
+import ejercicios.ej2;
+import ejercicios.ej3;
+import ejercicios.ej4;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -27,16 +32,25 @@ public class Main {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
 
-        JPanel panelPrincipal = new JPanel();
+        JPanel panelPrincipal = new JPanel(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
+
+        JPanel panelCentral = new JPanel(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.insets = new Insets(5, 5, 5, 5);
+
         panelPrincipal.setLayout(new BorderLayout());
 
-        JPanel panelCentral = new JPanel(new GridLayout(4, 1, 10, 10));
         JComboBox<String> comboBox = new JComboBox<>();
+
         resultadoLabel = new JLabel();
+        JScrollPane scrollPane = new JScrollPane(resultadoLabel);
         resultadoLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
         JLabel tituloLabel = new JLabel("<html><h2>Selección de Ejercicio</h2></html>");
         tituloLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        panelPrincipal.add(scrollPane, BorderLayout.CENTER);
 
         JButton ejecutarButton = new JButton("Ejecutar");
         ejecutarButton.setHorizontalAlignment(SwingConstants.CENTER);
@@ -51,12 +65,14 @@ public class Main {
         comboBox.addItem("Ejercicio 3");
         comboBox.addItem("Ejercicio 4");
 
-        panelCentral.add(tituloLabel);
-        panelCentral.add(comboBox);
-        panelCentral.add(ejecutarButton);
+        panelCentral.add(tituloLabel, gbc);
+        gbc.gridy++;
+        panelCentral.add(comboBox, gbc);
+        gbc.gridy++;
+        panelCentral.add(ejecutarButton, gbc);
 
         panelPrincipal.add(panelCentral, BorderLayout.NORTH);
-        panelPrincipal.add(resultadoLabel, BorderLayout.CENTER);
+        panelPrincipal.add(scrollPane, BorderLayout.CENTER);
 
         frame.getContentPane().add(panelPrincipal);
         frame.setVisible(true);
@@ -72,12 +88,18 @@ public class Main {
                 case "Ejercicio 2":
                     ejecutarEjercicio2();
                     break;
+                case "Ejercicio 3":
+                    String resultadoEj3 = ej3.ejecutarEjercicio3();
+                    resultadoLabel.setText("<html>" + resultadoEj3.replace("\n", "<br>") + "</html>");
+                    break;
+                case "Ejercicio 4":
+
+                    break;
                 default:
                     resultadoLabel.setText("Ejercicio no encontrado");
             }
         }
     }
-
 
     public static void ejecutarEjercicio1() {
         ej1<Integer> parejaEnteros = new ej1<>(10, 20);
@@ -107,6 +129,10 @@ public class Main {
         }
 
         resultadoLabel.setText(stringBuilder.toString());
+    }
+
+    public static void ejecutarEjercicio3() {
+        ej3.ejecutarEjercicio3();
     }
 }
 

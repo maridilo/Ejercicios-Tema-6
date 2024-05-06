@@ -1,5 +1,6 @@
+package ejercicios;
 
-    public class ej1<T> {
+public class ej1<T> {
         private T primero;
         private T segundo;
 
