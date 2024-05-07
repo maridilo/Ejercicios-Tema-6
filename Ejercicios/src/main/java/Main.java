@@ -1,7 +1,4 @@
-import ejercicios.ej1;
-import ejercicios.ej2;
-import ejercicios.ej3;
-import ejercicios.ej4;
+import ejercicios.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,6 +12,7 @@ public class Main {
     private static final String EJERCICIO_2 = "Ejercicio 2";
     private static final String EJERCICIO_3 = "Ejercicio 3";
     private static final String EJERCICIO_4 = "Ejercicio 4";
+    private static final String EJERCICIO_5 = "Ejercicio 5";
 
     private static JLabel resultadoLabel;
 
@@ -64,6 +62,7 @@ public class Main {
         comboBox.addItem("Ejercicio 2");
         comboBox.addItem("Ejercicio 3");
         comboBox.addItem("Ejercicio 4");
+        comboBox.addItem("Ejercicio 5");
 
         panelCentral.add(tituloLabel, gbc);
         gbc.gridy++;
@@ -80,8 +79,8 @@ public class Main {
 
     public static void ejecutarEjercicioSeleccionado(Object seleccion) {
         if (seleccion != null && seleccion instanceof String) {
-            String ejemplo = (String) seleccion;
-            switch (ejemplo) {
+            String ejercicio = (String) seleccion;
+            switch (ejercicio) {
                 case "Ejercicio 1":
                     ejecutarEjercicio1();
                     break;
@@ -93,7 +92,10 @@ public class Main {
                     resultadoLabel.setText("<html>" + resultadoEj3.replace("\n", "<br>") + "</html>");
                     break;
                 case "Ejercicio 4":
-
+                    ejecutarEjercicio4();
+                    break;
+                case "Ejercicio 5":
+                    ejecutarEjercicio5();
                     break;
                 default:
                     resultadoLabel.setText("Ejercicio no encontrado");
@@ -133,6 +135,32 @@ public class Main {
 
     public static void ejecutarEjercicio3() {
         ej3.ejecutarEjercicio3();
+    }
+
+    public static void ejecutarEjercicio4() {
+        ej4 ej4 = new ej4();
+        ej4.crearYMostrarGUI();
+
+        List<String> listaCadenas = ej4.obtenerListaCadenas();
+        StringBuilder stringBuilder = new StringBuilder();
+        for (String cadena : listaCadenas) {
+            stringBuilder.append(cadena).append("\n");
+        }
+
+        resultadoLabel.setText(stringBuilder.toString());
+    }
+
+    public static void ejecutarEjercicio5() {
+        ej5 ej5 = new ej5();
+        ej5.crearYMostrarGUI();
+
+        List<String> listaCadenas = ej5.obtenerListaCadenas();
+        StringBuilder stringBuilder = new StringBuilder();
+        for (String cadena : listaCadenas) {
+            stringBuilder.append(cadena).append("\n");
+        }
+
+        resultadoLabel.setText(stringBuilder.toString());
     }
 }
 
