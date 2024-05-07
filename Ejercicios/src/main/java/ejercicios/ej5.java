@@ -12,6 +12,7 @@ public class ej5 {
 
     public ej5() {
         listaCadenas = new ArrayList<>();
+        listModel = new DefaultListModel<>();
     }
 
     public void agregarCadena(int posicion, String cadena) {
@@ -47,7 +48,6 @@ public class ej5 {
 
         JPanel panelPrincipal = new JPanel(new BorderLayout());
 
-        listModel = new DefaultListModel<>();
         JList<String> listComponent = new JList<>(listModel);
         JScrollPane scrollPane = new JScrollPane(listComponent);
 
@@ -55,15 +55,15 @@ public class ej5 {
         agregarButton.addActionListener(e -> {
             String cadena = JOptionPane.showInputDialog("Introduce una cadena:");
             String posicionStr = JOptionPane.showInputDialog("Introduce la posición:");
-            int posicion = Integer.parseInt(posicionStr);
-            agregarCadena(posicion, cadena);
+            int posicion = Integer.parseInt(posicionStr); // Línea 58
+            SwingUtilities.invokeLater(() -> agregarCadena(posicion, cadena));
         });
 
         JButton eliminarButton = new JButton("Eliminar cadena");
         eliminarButton.addActionListener(e -> {
             String posicionStr = JOptionPane.showInputDialog("Introduce la posición de la cadena a eliminar:");
             int posicion = Integer.parseInt(posicionStr);
-            eliminarCadena(posicion);
+            SwingUtilities.invokeLater(() -> eliminarCadena(posicion));
         });
 
         JPanel panelBotones = new JPanel(new GridLayout(1, 2, 10, 10));

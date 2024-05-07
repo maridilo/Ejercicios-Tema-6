@@ -100,10 +100,10 @@ public class Main {
                     ejecutarEjercicio5();
                     break;
                 case "Ejercicio 6":
-
+                    ejecutarEjercicio6();
                     break;
                 case "Ejercicio 7":
-
+                    ejecutarEjercicio7();
                     break;
                 case "Ejercicio 8":
 
@@ -185,5 +185,17 @@ public class Main {
 
         resultadoLabel.setText(stringBuilder.toString());
     }
+
+    public static void ejecutarEjercicio6() {
+        ej6 ej6 = new ej6();
+        ej6.crearYMostrarGUI();
+    }
+
+    public static void ejecutarEjercicio7() {
+        ej7 ej7 = new ej7();
+        ej7.crearYMostrarGUI();
+        ej7.listarContenido();
+    }
 }
+
 
