@@ -117,9 +117,6 @@ public class Main {
                 case "Ejercicio 11":
                     ej11.ordenarArchivo("salida.txt");
                     break;
-                case "Ejercicio 12":
-
-                    break;
                 default:
                     resultadoLabel.setText("Ejercicio no encontrado");
             }
