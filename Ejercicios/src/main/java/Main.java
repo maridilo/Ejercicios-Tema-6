@@ -112,7 +112,7 @@ public class Main {
                     ej9.ejecutarEjercicio9();
                     break;
                 case "Ejercicio 10":
-
+                    ej10.ejecutarEjercicio10();
                     break;
                 case "Ejercicio 11":
 
