@@ -115,7 +115,7 @@ public class Main {
                     ej10.ejecutarEjercicio10();
                     break;
                 case "Ejercicio 11":
-
+                    ej11.ordenarArchivo("salida.txt");
                     break;
                 case "Ejercicio 12":
 
