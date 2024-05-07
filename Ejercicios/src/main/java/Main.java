@@ -109,7 +109,7 @@ public class Main {
                     new ej8();
                     break;
                 case "Ejercicio 9":
-
+                    ej9.ejecutarEjercicio9();
                     break;
                 case "Ejercicio 10":
 
