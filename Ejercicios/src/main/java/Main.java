@@ -106,7 +106,7 @@ public class Main {
                     ejecutarEjercicio7();
                     break;
                 case "Ejercicio 8":
-
+                    new ej8();
                     break;
                 case "Ejercicio 9":
 
