@@ -1,4 +1,5 @@
 import ejercicios.*;
+import ejercicios.ej3;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,12 +9,6 @@ import java.util.List;
 import java.util.Random;
 
 public class Main {
-    private static final String EJERCICIO_1 = "Ejercicio 1";
-    private static final String EJERCICIO_2 = "Ejercicio 2";
-    private static final String EJERCICIO_3 = "Ejercicio 3";
-    private static final String EJERCICIO_4 = "Ejercicio 4";
-    private static final String EJERCICIO_5 = "Ejercicio 5";
-
     private static JLabel resultadoLabel;
 
     public static void main(String[] args) {
@@ -63,6 +58,13 @@ public class Main {
         comboBox.addItem("Ejercicio 3");
         comboBox.addItem("Ejercicio 4");
         comboBox.addItem("Ejercicio 5");
+        comboBox.addItem("Ejercicio 6");
+        comboBox.addItem("Ejercicio 7");
+        comboBox.addItem("Ejercicio 8");
+        comboBox.addItem("Ejercicio 9");
+        comboBox.addItem("Ejercicio 10");
+        comboBox.addItem("Ejercicio 11");
+        comboBox.addItem("Ejercicio 12");
 
         panelCentral.add(tituloLabel, gbc);
         gbc.gridy++;
@@ -78,7 +80,7 @@ public class Main {
     }
 
     public static void ejecutarEjercicioSeleccionado(Object seleccion) {
-        if (seleccion != null && seleccion instanceof String) {
+        if (seleccion instanceof String) {
             String ejercicio = (String) seleccion;
             switch (ejercicio) {
                 case "Ejercicio 1":
@@ -96,6 +98,27 @@ public class Main {
                     break;
                 case "Ejercicio 5":
                     ejecutarEjercicio5();
+                    break;
+                case "Ejercicio 6":
+
+                    break;
+                case "Ejercicio 7":
+
+                    break;
+                case "Ejercicio 8":
+
+                    break;
+                case "Ejercicio 9":
+
+                    break;
+                case "Ejercicio 10":
+
+                    break;
+                case "Ejercicio 11":
+
+                    break;
+                case "Ejercicio 12":
+
                     break;
                 default:
                     resultadoLabel.setText("Ejercicio no encontrado");

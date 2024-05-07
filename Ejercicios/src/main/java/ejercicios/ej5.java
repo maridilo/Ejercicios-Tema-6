@@ -1,15 +1,14 @@
 package ejercicios;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ej5 {
 
-    private List<String> listaCadenas;
+    private static List<String> listaCadenas;
     private static DefaultListModel<String> listModel;
-    private static JList<String> listComponent;
 
     public ej5() {
         listaCadenas = new ArrayList<>();
@@ -18,28 +17,29 @@ public class ej5 {
     public void agregarCadena(int posicion, String cadena) {
         if (cadena != null && !cadena.isEmpty() && posicion >= 0 && posicion <= listaCadenas.size()) {
             listaCadenas.add(posicion, cadena);
+            actualizarLista();
         }
     }
 
     public void eliminarCadena(int posicion) {
         if (posicion >= 0 && posicion < listaCadenas.size()) {
             listaCadenas.remove(posicion);
+            actualizarLista();
         }
     }
 
-    public List<String> obtenerListaCadenas() {
+    public static List<String> obtenerListaCadenas() {
         return listaCadenas;
     }
 
     private void actualizarLista() {
         listModel.clear();
-        List<String> listaCadenas = obtenerListaCadenas();
-        listaCadenas.forEach(listModel::addElement);
+        for (String cadena : listaCadenas) {
+            listModel.addElement(cadena);
+        }
     }
 
     public void crearYMostrarGUI() {
-        listaCadenas = new ArrayList<>();
-
         JFrame frame = new JFrame("Lista de Cadenas");
         frame.setSize(400, 300);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -56,37 +56,14 @@ public class ej5 {
             String cadena = JOptionPane.showInputDialog("Introduce una cadena:");
             String posicionStr = JOptionPane.showInputDialog("Introduce la posición:");
             int posicion = Integer.parseInt(posicionStr);
-            SwingWorker<Void, Void> worker = new SwingWorker<Void, Void> () {
-                @Override
-                protected Void doInBackground() throws Exception {
-                    agregarCadena(posicion, cadena);
-                    return null;
-                }
-            @Override
-            protected void done() {
-                actualizarLista();
-            }
-        };
-        worker.execute();
-    });
+            agregarCadena(posicion, cadena);
+        });
 
         JButton eliminarButton = new JButton("Eliminar cadena");
         eliminarButton.addActionListener(e -> {
             String posicionStr = JOptionPane.showInputDialog("Introduce la posición de la cadena a eliminar:");
             int posicion = Integer.parseInt(posicionStr);
-            SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
-                @Override
-                protected Void doInBackground() throws Exception {
-                    eliminarCadena(posicion);
-                    return null;
-                }
-
-                @Override
-                protected void done() {
-                    actualizarLista();
-                }
-            };
-            worker.execute();
+            eliminarCadena(posicion);
         });
 
         JPanel panelBotones = new JPanel(new GridLayout(1, 2, 10, 10));
@@ -98,7 +75,6 @@ public class ej5 {
 
         frame.getContentPane().add(panelPrincipal);
         frame.setVisible(true);
-
-        listaCadenas = new ArrayList<>();
     }
 }
+
